@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 01 - Questions</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Tamil",sans-serif;background:#f5f7fb;color:#1f2937}
+header{background:linear-gradient(135deg,#2563eb,#4f46e5);color:white;text-align:center;padding:34px 18px}
+header h1{margin:0 0 8px;font-size:30px}header p{margin:0;line-height:1.6}
+.container{max-width:900px;margin:auto;padding:28px 18px 45px}.progress{text-align:center;color:#6b7280;font-weight:bold;margin-bottom:16px}
+.card{background:white;border-radius:18px;padding:28px;box-shadow:0 7px 24px rgba(0,0,0,.08)}
+.type{color:#2563eb;font-size:13px;font-weight:bold;margin-bottom:12px}.question{font-size:21px;line-height:1.65;font-weight:bold}
+.options{margin-top:22px;display:grid;gap:10px}.option{padding:14px;border:1px solid #dbe3ef;border-radius:10px;cursor:pointer;background:#fff;text-align:left;font-size:16px}
+.option:hover,.option.selected{background:#eff6ff;border-color:#2563eb}.answer{display:none;margin-top:22px;padding:18px;border-radius:12px;background:#f0fdf4;border-left:4px solid #16a34a;line-height:1.75;font-size:17px}
+.show{margin-top:20px;border:0;border-radius:10px;padding:12px 20px;background:#2563eb;color:white;font-weight:bold;cursor:pointer}
+.controls{display:flex;justify-content:center;gap:12px;margin-top:18px}.controls button{border:0;border-radius:10px;padding:12px 20px;font-weight:bold;cursor:pointer}
+.prev{background:#e5e7eb;color:#374151}.next{background:#2563eb;color:white}.back{display:block;text-align:center;margin-top:22px;color:#2563eb;text-decoration:none;font-weight:bold}
+footer{text-align:center;color:#6b7280;padding:25px;font-size:14px;line-height:1.7}
+@media(max-width:600px){header h1{font-size:24px}.card{padding:22px 18px}.question{font-size:19px}}
+</style>
+</head>
+<body>
+<header><h1>❓ Chapter 01 — Questions</h1><p>ஆரோக்கியமான சமூகமொன்றைக் கட்டியெழுப்புவோம்</p></header>
+<main class="container">
+<div class="progress" id="progress"></div>
+<section class="card">
+<div class="type" id="type"></div><div class="question" id="question"></div>
+<div class="options" id="options"></div>
+<button class="show" id="showBtn" onclick="showAnswer()">✅ Show Answer</button>
+<div class="answer" id="answer"></div>
+</section>
+<div class="controls"><button class="prev" onclick="previousQuestion()">← Previous</button><button class="next" onclick="nextQuestion()">Next →</button></div>
+<a class="back" href="../index.html">← Back to Study Hub</a>
+</main>
+<footer><strong>P. Sharmila Murugananth</strong><br>Grade 10 Health • Final Examination Revision</footer>
+<script>
+const questions = [{"type": "mcq", "q": "உலக சுகாதார நிறுவனத்தின் (WHO) வரைவிலக்கணப்படி, 'பூரண சுகாதாரம்' என்பது எவற்றின் நல்வாழ்வை உள்ளடக்கியது?", "options": ["நோய்கள் மற்றும் பலவீனங்கள் இல்லாத நிலை மட்டும்", "உடல் மற்றும் உள ஆரோக்கியம் மட்டும்", "உடல், உள, சமூக மற்றும் ஆன்மிக ரீதியான நல்வாழ்வு", "போசணையான உணவு மற்றும் உடற்பயிற்சி மட்டும்"], "answer": "உடல், உள, சமூக மற்றும் ஆன்மிக ரீதியான நல்வாழ்வு"}, {"type": "mcq", "q": "'சமூக பொருளாதாரச் சூழல்' எனும் காரணியின் கீழ் வருவது எது?", "options": ["சுத்தமான குடிநீர் மற்றும் முறையான கழிவு முகாமைத்துவம்", "கல்வித் தரம் உயர்வடைதல், மன அழுத்தம் மற்றும் சண்டை சச்சரவுகள் இல்லாதிருத்தல்", "தகுந்த காலநிலையுடன் கூடிய பௌதிகச் சூழல்", "பரம்பரை நோய் அலகுகள் இல்லாது இருத்தல்"], "answer": "கல்வித் தரம் உயர்வடைதல், மன அழுத்தம் மற்றும் சண்டை சச்சரவுகள் இல்லாதிருத்தல்"}, {"type": "mcq", "q": "வளர்ந்தவர்கள் ஒரு நாளைக்கு சராசரியாக மேற்கொள்ள வேண்டிய 'தூக்கம் மற்றும் ஓய்வு' கால அளவு யாது?", "options": ["4 - 5 மணித்தியாலங்கள்", "6 - 8 மணித்தியாலங்கள்", "9 - 10 மணித்தியாலங்கள்", "3 - 4 மணித்தியாலங்கள்"], "answer": "6 - 8 மணித்தியாலங்கள்"}, {"type": "mcq", "q": "BMI ஐ kgm⁻² அலகில் கணிப்பதற்கான சரியான சூத்திரம் எது?", "options": ["உயரம் (m) / உடல் திணிவு (kg)", "உடல் திணிவு (kg) × [உயரம் (m) × உயரம் (m)]", "உடல் திணிவு (kg) / [உயரம் (m) × உயரம் (m)]", "[உயரம் (m) + உயரம் (m)] / உடல் திணிவு (kg)"], "answer": "உடல் திணிவு (kg) / [உயரம் (m) × உயரம் (m)]"}, {"type": "mcq", "q": "சுறுசுறுப்பற்ற வாழ்க்கை முறையினால் ஏற்படக்கூடிய தொற்றாத நோய்களில் (NCDs) உள்ளடக்கப்படுவது எது?", "options": ["காய்ச்சல் மற்றும் தடிமன்", "நீரிழிவு, புற்றுநோய் மற்றும் பக்கவாதம் (Stroke)", "வயிற்றுப்போக்கு மற்றும் வாந்தி", "காசநோய் மற்றும் மலேரியா"], "answer": "நீரிழிவு, புற்றுநோய் மற்றும் பக்கவாதம் (Stroke)"}, {"type": "mcq", "q": "ஆசிய அளவீட்டின்படி 'சாதாரண நிறை' கொண்ட ஒருவரின் BMI எல்லைப் பெறுமானம் என்ன?", "options": ["< 18.5", "18.5 - 22.9", "23.0 - 26.9", "> 27.0"], "answer": "18.5 - 22.9"}, {"type": "mcq", "q": "சனத்தொகை அடர்த்தி அதிகரிப்பால் ஏற்படும் பிரதான பாதிப்பு எது?", "options": ["கல்வியறிவு மட்டம் குறைவடைதல்", "சுவாசத்தொகுதி மற்றும் சமிபாட்டுத்தொகுதி தொடர்பான நோய்கள்", "சுற்றுலாத்துறையின் வீழ்ச்சி", "பரம்பரை அலகுகளில் ஏற்படும் மாற்றம்"], "answer": "சுவாசத்தொகுதி மற்றும் சமிபாட்டுத்தொகுதி தொடர்பான நோய்கள்"}, {"type": "mcq", "q": "மகாத்மா காந்தியினால் முன்வைக்கப்பட்ட 'எளிய வாழ்க்கை முறை' என்பதன் அடிப்படை நோக்கம் என்ன?", "options": ["நவீன தொழில்நுட்பக் கருவிகளை அதிகம் பயன்படுத்துதல்", "அத்தியாவசியத் தேவைகளில் மட்டும் திருப்தியடைந்து மகிழ்வாக வாழ்தல்", "விளம்பரங்களைப் பின்பற்றி பொருட்களைச் சேகரித்தல்", "வருமானத்தை விட அதிக செலவு செய்தல்"], "answer": "அத்தியாவசியத் தேவைகளில் மட்டும் திருப்தியடைந்து மகிழ்வாக வாழ்தல்"}, {"type": "mcq", "q": "ஊடக விளம்பரங்கள் பிள்ளைகளின் உணவுப் பழக்கத்தில் ஏற்படுத்தும் எதிர்மறையான தாக்கம் எது?", "options": ["பாரம்பரிய உணவுகள் மீதான ஆர்வத்தை அதிகரித்தல்", "உடனடி உணவுகள் (Fast Food) மற்றும் பிழையான உணவுப் பழக்கங்கள் மீது ஈர்ப்பை ஏற்படுத்துதல்", "சமச்சீர் உணவின் முக்கியத்துவத்தை உணர்த்துதல்", "உடற்பயிற்சி செய்வதற்கான நேரத்தை ஒதுக்குதல்"], "answer": "உடனடி உணவுகள் (Fast Food) மற்றும் பிழையான உணவுப் பழக்கங்கள் மீது ஈர்ப்பை ஏற்படுத்துதல்"}, {"type": "mcq", "q": "பிள்ளைகளின் (5-19 வயது) போசணை மட்டத்தைத் தீர்மானிக்கும் BMI பெறுமானம் எவற்றைப் பொறுத்து மாறுபடும்?", "options": ["உயரம் மற்றும் வருமானம்", "வயது மற்றும் பால் (ஆண்/பெண்)", "வசிக்கும் இடம் மற்றும் காலநிலை", "கல்வியறிவு மற்றும் இனம்"], "answer": "வயது மற்றும் பால் (ஆண்/பெண்)"}, {"type": "short", "q": "'பூரண சுகாதாரம்' என்பதற்கான உலக சுகாதார நிறுவனத்தின் வரைவிலக்கணத்தைத் தருக.", "options": null, "answer": "பூரண சுகாதாரம் என்பது நோய்கள், பலவீனங்கள் இல்லாத நிலை மட்டுமன்றி உடல், உள, சமூக மற்றும் ஆன்மிக ரீதியான நல்வாழ்வையும் கொண்டதாகும்."}, {"type": "short", "q": "பூரண சுகாதாரத்தைப் பேணுவதற்குத் தடையாக உள்ள ஏதேனும் நான்கு சவால்களைப் பட்டியலிடுக.", "options": null, "answer": "1. தொழில்நுட்ப வளர்ச்சி<br>2. சனத்தொகை அடர்த்தி<br>3. ஊடகங்களின் தாக்கம்<br>4. பொருளாதார மற்றும் கல்வி நிலைகள்."}, {"type": "short", "q": "எளிய வாழ்க்கை முறையைப் பின்பற்றுவதன் மூலம் மன அழுத்தத்தைக் குறைப்பது எப்படி?", "options": null, "answer": "எளிய வாழ்க்கை முறை என்பது அத்தியாவசியத் தேவைகளில் மட்டும் திருப்தியடைந்து மகிழ்வாக வாழ்வதாகும். இது தேவையற்ற போட்டிகளையும் ஆசைகளையும் தவிர்ப்பதன் மூலம் மன அழுத்தத்தைக் குறைக்க உதவுகிறது."}, {"type": "short", "q": "போதைப்பொருள் மற்றும் மதுபானப் பயன்பாட்டைத் தடுப்பதற்கு அரசாங்கம் எடுக்க வேண்டிய சட்டரீதியான நடவடிக்கைகள் இரண்டு தருக.", "options": null, "answer": "1. போதைப்பொருள் மற்றும் புகையிலை உற்பத்திகளின் விலையை அதிகரித்தல் மற்றும் விளம்பரங்களைத் தடை செய்தல்.<br>2. சட்டவிரோத விற்பனைக்கு எதிராகக் கடுமையான சட்ட அமுலாக்கத்தை (Law Enforcement) மேற்கொள்தல்."}, {"type": "short", "q": "தொழில்நுட்ப வளர்ச்சியினால் உடல் உழைப்பு குறைவதால் ஏற்படக்கூடிய மூன்று தொற்றாத நோய்களைக் குறிப்பிடுக.", "options": null, "answer": "நீரிழிவு, உயர் குருதி அமுக்கம் மற்றும் பக்கவாதம் (Stroke)."}, {"type": "short", "q": "ஒருவரின் சுகாதாரத்தைப் பாதிக்கும் 5 காரணிகளைக் குறிப்பிடுக.", "options": null, "answer": "பரம்பரை, தனிநபர் நடத்தை, சமூகப் பொருளாதாரச் சூழல், பௌதிகச் சூழல், சுகாதாரச் சேவை."}, {"type": "short", "q": "பூரண சுகாதாரத்தைப் பேணுவதற்குப் பொருத்தமான 3 வாழ்க்கை முறைகளைக் குறிப்பிடுக.", "options": null, "answer": "முறையான உணவுப் பழக்கம், உடற்பயிற்சி, போதுமான தூக்கம் மற்றும் ஓய்வு."}, {"type": "short", "q": "தற்காலத்தில் சுகாதாரத்தைப் பாதிக்கும் 4 சவால்களைத் தருக.", "options": null, "answer": "பொருளாதார நிலை, சனத்தொகை அடர்த்தி, ஊடகத் தாக்கம், தொழில்நுட்பம்."}, {"type": "short", "q": "சுகாதாரச் சவால்களை வெற்றி கொள்வதற்கு மேற்கொள்ளக்கூடிய ஒரு நடவடிக்கையைத் தருக.", "options": null, "answer": "கல்வியை உயர்த்துதல் (எ.கா: சுகாதாரக் கல்வியைக் கட்டாயமாக்கல்)."}, {"type": "short", "q": "உமது உயரம் மற்றும் நிறை என்பவற்றைப் பயன்படுத்தி உமது BMI ஐக் கணித்த பின், அதனை எதனைக் கொண்டு தீர்மானிப்பாய்?", "options": null, "answer": "வயது மற்றும் பாலிற்குப் பொருத்தமான வரைபுப் பெறுமானத்தைக் கொண்டு தீர்மானித்தல்."}, {"type": "short", "q": "ஒரு வார காலப்பகுதியில் ஊடகங்களில் (தொலைக்காட்சி, வானொலி) அவதானித்த சுகாதார விளம்பரங்களை எவ்வாறு வகைப்படுத்துவாய்?", "options": null, "answer": "ஒரு அட்டவணையைத் தயாரித்து (ஊடகம், விளம்பரம், தாக்கம்) அதன் மூலம் வகைப்படுத்துதல்."}, {"type": "short", "q": "ஊடக விளம்பரங்களினூடாக உம்மில் ஏற்படும் தாக்கங்களை எவ்வாறு விளக்குவாய்?", "options": null, "answer": "விளம்பரங்கள் ஏற்படுத்தும் தூண்டுதல் மற்றும் பிழையான உணவுப் பழக்கங்கள் பற்றி விளக்குதல்."}, {"type": "short", "q": "5 - 19 வயது வரை பிள்ளைகளுக்கான BMI வரைபடத்தில், உமது வயது மற்றும் பாலிற்குரிய 'பச்சை' நிற எல்லை எதனைக் குறிக்கும்?", "options": null, "answer": "சாதாரண நிறை."}, {"type": "short", "q": "தினசரி வாழ்வில் மின்தூக்கி (Lift) பயன்படுத்துவதற்குப் பதிலாக எதனைப் பின்பற்றுவது சுறுசுறுப்பான வாழ்க்கை முறைக்கு உதவும்?", "options": null, "answer": "படிக்கட்டுகளைப் பயன்படுத்துதல்."}, {"type": "short", "q": "எளிய வாழ்க்கை முறை பற்றிய எண்ணக்கரு மகாத்மா காந்தியினால் எப்போது முன்வைக்கப்பட்டது?", "options": null, "answer": "கடந்த தசாப்தங்களின் ஆரம்பக் கட்டத்தில்."}];
+let current=0;
+function render(){
+ const item=questions[current];
+ document.getElementById("progress").textContent=`Question ${current+1} / ${questions.length}`;
+ document.getElementById("type").textContent=item.type==="mcq"?"MULTIPLE CHOICE":"PRACTICE QUESTION";
+ document.getElementById("question").textContent=item.q;
+ const opts=document.getElementById("options");opts.innerHTML="";
+ if(item.options){item.options.forEach((o,i)=>{const b=document.createElement("button");b.className="option";b.textContent=String.fromCharCode(65+i)+") "+o;b.onclick=()=>{document.querySelectorAll(".option").forEach(x=>x.classList.remove("selected"));b.classList.add("selected")};opts.appendChild(b)})}
+ document.getElementById("answer").innerHTML=item.answer;
+ document.getElementById("answer").style.display="none";document.getElementById("showBtn").textContent="✅ Show Answer";
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+function showAnswer(){const a=document.getElementById("answer"),b=document.getElementById("showBtn");if(a.style.display==="none"){a.style.display="block";b.textContent="🙈 Hide Answer"}else{a.style.display="none";b.textContent="✅ Show Answer"}}
+function nextQuestion(){current=(current+1)%questions.length;render()}function previousQuestion(){current=(current-1+questions.length)%questions.length;render()}render();
+</script>
+</body>
+</html>
