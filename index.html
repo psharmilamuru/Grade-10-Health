@@ -38,7 +38,7 @@
             padding: 40px 30px;
             border-radius: 20px;
             text-align: center;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
         }
 
         .login-icon {
@@ -54,6 +54,7 @@
         .login-box p {
             color: #6b7280;
             margin-bottom: 20px;
+            line-height: 1.5;
         }
 
         .login-box input {
@@ -122,7 +123,6 @@
         header p {
             margin: 12px 0 0;
             font-size: 18px;
-            opacity: 0.95;
         }
 
 
@@ -160,7 +160,7 @@
 
         .chapters {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
         }
 
@@ -168,31 +168,25 @@
             background: white;
             border-radius: 18px;
             padding: 25px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .chapter:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
         }
 
         .chapter-number {
             font-size: 14px;
             font-weight: bold;
             color: #2563eb;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .chapter h3 {
-            margin: 0 0 8px;
-            font-size: 22px;
+            margin: 0 0 10px;
+            font-size: 21px;
+            line-height: 1.5;
         }
 
         .chapter-description {
             color: #6b7280;
             font-size: 14px;
-            line-height: 1.5;
             margin-bottom: 20px;
         }
 
@@ -217,11 +211,16 @@
             text-align: center;
             font-weight: bold;
             font-size: 14px;
-            transition: background 0.2s ease;
         }
 
         .resources a:hover {
             background: #dbeafe;
+        }
+
+        .resources a.disabled {
+            background: #f3f4f6;
+            color: #9ca3af;
+            cursor: not-allowed;
         }
 
 
@@ -362,60 +361,51 @@
 
 
 
-            <!-- CHAPTERS -->
+            <!-- =========================
+                 CHAPTERS
+            ========================= -->
 
             <div class="chapters">
 
 
                 <!-- CHAPTER 01 -->
-<!-- CHAPTER 01 -->
 
-<div class="chapter">
+                <div class="chapter">
 
-    <div class="chapter-number">
-        CHAPTER 01
-    </div>
+                    <div class="chapter-number">
+                        CHAPTER 01
+                    </div>
 
-    <h3>
-        ஆரோக்கியமான சமூகம் ஒன்றை கட்டி எழுப்புவோம்
-    </h3>
+                    <h3>
+                        ஆரோக்கியமான சமூகமொன்றைக் கட்டியெழுப்புவோம்
+                    </h3>
 
-    <p class="chapter-description">
-        Final examination revision resources.
-    </p>
+                    <p class="chapter-description">
+                        Final examination revision resources.
+                    </p>
 
-    <div class="resources">
+                    <div class="resources">
 
-        <a href="#"
-           onclick="alert('Mind Map coming soon!'); return false;">
-            🧠 Mind Map
-        </a>
+                        <a href="#" class="disabled">
+                            🧠 Mind Map
+                        </a>
 
-        <a href="#"
-           onclick="alert('Video coming soon!'); return false;">
-            🎥 Video
-        </a>
+                        <a href="#" class="disabled">
+                            🎥 Video
+                        </a>
 
-        <a href="https://notebook.google.com/notebook/a38cb91e-06bb-4c0f-b8e5-61dbd0dfafbc/artifact/69b47dba-d0e6-47a1-bdfe-68dc7d18bcfd?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1"
-           target="_blank">
-            🃏 Flashcards
-        </a>
+                        <a href="#" class="disabled">
+                            🃏 Flashcards
+                        </a>
 
-        <a href="https://notebook.google.com/notebook/a38cb91e-06bb-4c0f-b8e5-61dbd0dfafbc/artifact/277951db-2bb8-437d-87ed-fdb1e0e3043c?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1"
-           target="_blank">
-            ❓ Questions
-        </a>
+                        <a href="#" class="disabled">
+                            ❓ Questions
+                        </a>
 
-    </div>
+                    </div>
 
-</div>
-               
+                </div>
 
-                 
-
-                       
-                        
-                        
 
 
                 <!-- CHAPTER 02 -->
@@ -427,31 +417,19 @@
                     </div>
 
                     <h3>
-                        Chapter Title
+                        பிள்ளைப்பருவ அறிவுத்திறனை அறிந்து கொள்வோம்
                     </h3>
 
                     <p class="chapter-description">
-                        Add a short description of
-                        this chapter here.
+                        Final examination revision resources.
                     </p>
 
                     <div class="resources">
 
-                        <a href="#" target="_blank">
-                            🧠 Mind Map
-                        </a>
-
-                        <a href="#" target="_blank">
-                            🎥 Video
-                        </a>
-
-                        <a href="#" target="_blank">
-                            🃏 Flashcards
-                        </a>
-
-                        <a href="#" target="_blank">
-                            ❓ Questions
-                        </a>
+                        <a href="#" class="disabled">🧠 Mind Map</a>
+                        <a href="#" class="disabled">🎥 Video</a>
+                        <a href="#" class="disabled">🃏 Flashcards</a>
+                        <a href="#" class="disabled">❓ Questions</a>
 
                     </div>
 
@@ -468,31 +446,222 @@
                     </div>
 
                     <h3>
-                        Chapter Title
+                        சரியான கொள்கைகளைப் பேணிக் கொள்வோம்
                     </h3>
 
                     <p class="chapter-description">
-                        Add a short description of
-                        this chapter here.
+                        Final examination revision resources.
                     </p>
 
                     <div class="resources">
 
-                        <a href="#" target="_blank">
-                            🧠 Mind Map
-                        </a>
+                        <a href="#" class="disabled">🧠 Mind Map</a>
+                        <a href="#" class="disabled">🎥 Video</a>
+                        <a href="#" class="disabled">🃏 Flashcards</a>
+                        <a href="#" class="disabled">❓ Questions</a>
 
-                        <a href="#" target="_blank">
-                            🎥 Video
-                        </a>
+                    </div>
 
-                        <a href="#" target="_blank">
-                            🃏 Flashcards
-                        </a>
+                </div>
 
-                        <a href="#" target="_blank">
-                            ❓ Questions
-                        </a>
+
+
+                <!-- CHAPTER 04 -->
+
+                <div class="chapter">
+
+                    <div class="chapter-number">
+                        CHAPTER 04
+                    </div>
+
+                    <h3>
+                        விளையாட்டுக்களிலும் வெளிக்களச் செயற்பாடுகளிலும் ஈடுபடுவோம்
+                    </h3>
+
+                    <p class="chapter-description">
+                        Final examination revision resources.
+                    </p>
+
+                    <div class="resources">
+
+                        <a href="#" class="disabled">🧠 Mind Map</a>
+                        <a href="#" class="disabled">🎥 Video</a>
+                        <a href="#" class="disabled">🃏 Flashcards</a>
+                        <a href="#" class="disabled">❓ Questions</a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CHAPTER 05 -->
+
+                <div class="chapter">
+
+                    <div class="chapter-number">
+                        CHAPTER 05
+                    </div>
+
+                    <h3>
+                        மெய்வல்லுநர் விளையாட்டுக்கள்
+                    </h3>
+
+                    <p class="chapter-description">
+                        Final examination revision resources.
+                    </p>
+
+                    <div class="resources">
+
+                        <a href="#" class="disabled">🧠 Mind Map</a>
+                        <a href="#" class="disabled">🎥 Video</a>
+                        <a href="#" class="disabled">🃏 Flashcards</a>
+                        <a href="#" class="disabled">❓ Questions</a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CHAPTER 06 -->
+
+                <div class="chapter">
+
+                    <div class="chapter-number">
+                        CHAPTER 06
+                    </div>
+
+                    <h3>
+                        விளையாட்டு விதிமுறைகள் மற்றும் ஒழுக்கம் என்பவற்றை மதித்துச் செயற்படுவோம்
+                    </h3>
+
+                    <p class="chapter-description">
+                        Final examination revision resources.
+                    </p>
+
+                    <div class="resources">
+
+                        <a href="#" class="disabled">🧠 Mind Map</a>
+                        <a href="#" class="disabled">🎥 Video</a>
+                        <a href="#" class="disabled">🃏 Flashcards</a>
+                        <a href="#" class="disabled">❓ Questions</a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CHAPTER 07 -->
+
+                <div class="chapter">
+
+                    <div class="chapter-number">
+                        CHAPTER 07
+                    </div>
+
+                    <h3>
+                        ஆரோக்கியமான வாழ்க்கைக்குத் தேவையான போசணையைப் பெற்றுக் கொள்வோம்
+                    </h3>
+
+                    <p class="chapter-description">
+                        Final examination revision resources.
+                    </p>
+
+                    <div class="resources">
+
+                        <a href="#" class="disabled">🧠 Mind Map</a>
+                        <a href="#" class="disabled">🎥 Video</a>
+                        <a href="#" class="disabled">🃏 Flashcards</a>
+                        <a href="#" class="disabled">❓ Questions</a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CHAPTER 08 -->
+
+                <div class="chapter">
+
+                    <div class="chapter-number">
+                        CHAPTER 08
+                    </div>
+
+                    <h3>
+                        உடல் ஆரோக்கியத்தைப் பேணிக் கொள்வோம்
+                    </h3>
+
+                    <p class="chapter-description">
+                        Final examination revision resources.
+                    </p>
+
+                    <div class="resources">
+
+                        <a href="#" class="disabled">🧠 Mind Map</a>
+                        <a href="#" class="disabled">🎥 Video</a>
+                        <a href="#" class="disabled">🃏 Flashcards</a>
+                        <a href="#" class="disabled">❓ Questions</a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CHAPTER 09 -->
+
+                <div class="chapter">
+
+                    <div class="chapter-number">
+                        CHAPTER 09
+                    </div>
+
+                    <h3>
+                        ஆரோக்கியமான வாழ்க்கைக்காக உற்றகைகளைப் பேணுவோம்
+                    </h3>
+
+                    <p class="chapter-description">
+                        Final examination revision resources.
+                    </p>
+
+                    <div class="resources">
+
+                        <a href="#" class="disabled">🧠 Mind Map</a>
+                        <a href="#" class="disabled">🎥 Video</a>
+                        <a href="#" class="disabled">🃏 Flashcards</a>
+                        <a href="#" class="disabled">❓ Questions</a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CHAPTER 10 -->
+
+                <div class="chapter">
+
+                    <div class="chapter-number">
+                        CHAPTER 10
+                    </div>
+
+                    <h3>
+                        அன்றாட வாழ்வில் எதிர்நோக்கும் சவால்களுக்கு வெற்றிகரமாக முகங்கொடுத்து மகிழ்ச்சியான வாழ்க்கையை மேற்கொள்வோம்
+                    </h3>
+
+                    <p class="chapter-description">
+                        Final examination revision resources.
+                    </p>
+
+                    <div class="resources">
+
+                        <a href="#" class="disabled">🧠 Mind Map</a>
+                        <a href="#" class="disabled">🎥 Video</a>
+                        <a href="#" class="disabled">🃏 Flashcards</a>
+                        <a href="#" class="disabled">❓ Questions</a>
 
                     </div>
 
@@ -505,7 +674,9 @@
 
 
 
-        <!-- FOOTER -->
+        <!-- =========================
+             FOOTER
+        ========================= -->
 
         <footer>
 
@@ -530,20 +701,10 @@
 
     <script>
 
-        /*
-         * STUDY HUB PASSWORD
-         *
-         * Change "health10" later
-         * to your preferred password.
-         */
-
         const correctPassword = "health10";
 
 
-        /*
-         * Check whether the student
-         * has already entered the password.
-         */
+        /* Remember the student's login */
 
         if (
             localStorage.getItem("healthLoggedIn") === "true"
@@ -554,9 +715,7 @@
         }
 
 
-        /*
-         * Check password
-         */
+        /* Check password */
 
         function checkPassword() {
 
@@ -585,10 +744,7 @@
         }
 
 
-        /*
-         * Allow students to press ENTER
-         * instead of clicking the button.
-         */
+        /* Press ENTER to log in */
 
         function handleEnter(event) {
 
@@ -601,9 +757,7 @@
         }
 
 
-        /*
-         * Show the Study Hub
-         */
+        /* Show Study Hub */
 
         function showStudyHub() {
 
