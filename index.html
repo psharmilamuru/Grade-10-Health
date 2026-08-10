@@ -264,31 +264,37 @@
         </footer>
 
     </div>
+<script>
 
+    const correctPassword = "health10";
 
-    <script>
+    // Check whether the student has already logged in
+    if (sessionStorage.getItem("healthLoggedIn") === "true") {
+        document.getElementById("loginScreen").style.display = "none";
+        document.getElementById("studyHub").style.display = "block";
+    }
 
-        function checkPassword() {
+    function checkPassword() {
 
-            const password =
-                document.getElementById("password").value;
+        const password = document.getElementById("password").value;
 
-            /* TEMPORARY PASSWORD */
-            const correctPassword = "health10";
+        if (password === correctPassword) {
 
-            if (password === correctPassword) {
+            // Remember login during this browser session
+            sessionStorage.setItem("healthLoggedIn", "true");
 
-                document.getElementById("loginScreen").style.display = "none";
-                document.getElementById("studyHub").style.display = "block";
+            document.getElementById("loginScreen").style.display = "none";
+            document.getElementById("studyHub").style.display = "block";
 
-            } else {
+        } else {
 
-                document.getElementById("error").style.display = "block";
+            document.getElementById("error").style.display = "block";
 
-            }
         }
+    }
 
-    </script>
+</script>
 
+ 
 </body>
 </html>
