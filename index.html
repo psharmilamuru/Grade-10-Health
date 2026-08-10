@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grade 10 Health - Study Hub</title>
+
+    <title>Grade 10 Health Study Hub</title>
 
     <style>
         * {
@@ -12,56 +13,72 @@
 
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            color: #222;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
         }
 
-        /* PASSWORD SCREEN */
+        /* =========================
+           PASSWORD SCREEN
+        ========================= */
+
         #loginScreen {
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            background: linear-gradient(135deg, #dff6ff, #eef2ff);
+            background: linear-gradient(135deg, #e0f2fe, #eef2ff);
         }
 
         .login-box {
-            background: white;
             width: 100%;
             max-width: 420px;
+            background: white;
             padding: 40px 30px;
-            border-radius: 18px;
+            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
         }
 
-        .login-box h1 {
+        .login-icon {
+            font-size: 48px;
             margin-bottom: 10px;
         }
 
+        .login-box h1 {
+            margin: 0 0 10px;
+            font-size: 28px;
+        }
+
         .login-box p {
-            color: #666;
+            color: #6b7280;
+            margin-bottom: 20px;
         }
 
         .login-box input {
             width: 100%;
-            padding: 13px;
-            margin: 15px 0 10px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            padding: 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
             font-size: 16px;
+            outline: none;
+        }
+
+        .login-box input:focus {
+            border-color: #2563eb;
         }
 
         .login-box button {
             width: 100%;
-            padding: 13px;
+            margin-top: 12px;
+            padding: 14px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             background: #2563eb;
             color: white;
             font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
         }
 
@@ -70,231 +87,527 @@
         }
 
         #error {
-            color: #d11;
             display: none;
-            margin-top: 10px;
+            color: #dc2626;
+            margin-top: 12px;
+            margin-bottom: 0;
         }
 
-        /* MAIN WEBSITE */
+
+        /* =========================
+           STUDY HUB
+        ========================= */
+
         #studyHub {
             display: none;
         }
 
         header {
-            background: #2563eb;
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
             color: white;
             text-align: center;
-            padding: 45px 20px;
+            padding: 55px 20px;
+        }
+
+        header .emoji {
+            font-size: 45px;
+            margin-bottom: 10px;
         }
 
         header h1 {
             margin: 0;
-            font-size: 36px;
+            font-size: 38px;
         }
 
         header p {
-            margin-top: 10px;
+            margin: 12px 0 0;
             font-size: 18px;
+            opacity: 0.95;
         }
+
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
 
         .container {
             max-width: 1100px;
-            margin: 35px auto;
-            padding: 0 20px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
         .intro {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
+
+        .intro h2 {
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .intro p {
+            max-width: 650px;
+            margin: auto;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           CHAPTER CARDS
+        ========================= */
 
         .chapters {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
         }
 
         .chapter {
             background: white;
+            border-radius: 18px;
             padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .chapter h2 {
-            margin-top: 0;
-            color: #2563eb;
+        .chapter:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
         }
+
+        .chapter-number {
+            font-size: 14px;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 6px;
+        }
+
+        .chapter h3 {
+            margin: 0 0 8px;
+            font-size: 22px;
+        }
+
+        .chapter-description {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           RESOURCE BUTTONS
+        ========================= */
 
         .resources {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
-            margin-top: 20px;
         }
 
         .resources a {
+            display: block;
+            padding: 12px 8px;
+            border-radius: 10px;
+            background: #eff6ff;
+            color: #1d4ed8;
             text-decoration: none;
             text-align: center;
-            padding: 11px 5px;
-            border-radius: 8px;
-            background: #eef2ff;
-            color: #1d4ed8;
             font-weight: bold;
+            font-size: 14px;
+            transition: background 0.2s ease;
         }
 
         .resources a:hover {
             background: #dbeafe;
         }
 
+
+        /* =========================
+           FOOTER
+        ========================= */
+
         footer {
             text-align: center;
-            padding: 30px;
-            color: #666;
+            padding: 35px 20px;
+            margin-top: 20px;
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.7;
         }
 
-        @media (max-width: 500px) {
+        footer .name {
+            font-weight: bold;
+            color: #374151;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 40px 20px;
+            }
+
             header h1 {
-                font-size: 28px;
+                font-size: 29px;
+            }
+
+            header p {
+                font-size: 16px;
+            }
+
+            .intro h2 {
+                font-size: 24px;
             }
 
             .resources {
                 grid-template-columns: 1fr;
             }
+
+            .chapter {
+                padding: 22px;
+            }
         }
     </style>
 </head>
 
+
 <body>
 
-    <!-- PASSWORD SCREEN -->
+
+    <!-- =========================
+         PASSWORD SCREEN
+    ========================= -->
+
     <div id="loginScreen">
 
         <div class="login-box">
 
-            <h1>🔐 Grade 10 Health</h1>
+            <div class="login-icon">🔐</div>
 
-            <p>Enter the study password to continue.</p>
+            <h1>Grade 10 Health</h1>
+
+            <p>
+                Enter the study password to access
+                the revision resources.
+            </p>
 
             <input
                 type="password"
                 id="password"
                 placeholder="Enter password"
+                onkeydown="handleEnter(event)"
             >
 
             <button onclick="checkPassword()">
                 Enter Study Hub
             </button>
 
-            <p id="error">Incorrect password. Please try again.</p>
+            <p id="error">
+                Incorrect password. Please try again.
+            </p>
 
         </div>
 
     </div>
 
 
-    <!-- STUDY HUB -->
+
+    <!-- =========================
+         STUDY HUB
+    ========================= -->
+
     <div id="studyHub">
 
+
+        <!-- HEADER -->
+
         <header>
-            <h1>📚 Grade 10 Health Study Hub</h1>
-            <p>Final Examination Revision</p>
+
+            <div class="emoji">📚</div>
+
+            <h1>Grade 10 Health Study Hub</h1>
+
+            <p>
+                Final Examination Revision
+            </p>
+
         </header>
 
-        <div class="container">
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="container">
 
             <div class="intro">
-                <h2>Revise Chapter by Chapter</h2>
+
+                <h2>
+                    Revise Chapter by Chapter
+                </h2>
+
                 <p>
-                    Use the mind maps, videos, flashcards and questions
-                    to prepare for your final examination.
+                    Learn, revise and practise using
+                    mind maps, videos, flashcards
+                    and questions.
                 </p>
+
             </div>
 
+
+
+            <!-- CHAPTERS -->
 
             <div class="chapters">
 
-                <!-- CHAPTER 1 -->
+
+                <!-- CHAPTER 01 -->
+
                 <div class="chapter">
-                    <h2>Chapter 01</h2>
-                    <p>Chapter title goes here.</p>
+
+                    <div class="chapter-number">
+                        CHAPTER 01
+                    </div>
+
+                    <h3>
+                        Chapter Title
+                    </h3>
+
+                    <p class="chapter-description">
+                        Add a short description of
+                        this chapter here.
+                    </p>
 
                     <div class="resources">
-                        <a href="#" target="_blank">🧠 Mind Map</a>
-                        <a href="#" target="_blank">🎥 Video</a>
-                        <a href="#" target="_blank">🃏 Flashcards</a>
-                        <a href="#" target="_blank">❓ Questions</a>
+
+                        <a href="#" target="_blank">
+                            🧠 Mind Map
+                        </a>
+
+                        <a href="#" target="_blank">
+                            🎥 Video
+                        </a>
+
+                        <a href="#" target="_blank">
+                            🃏 Flashcards
+                        </a>
+
+                        <a href="#" target="_blank">
+                            ❓ Questions
+                        </a>
+
                     </div>
+
                 </div>
 
 
-                <!-- CHAPTER 2 -->
+
+                <!-- CHAPTER 02 -->
+
                 <div class="chapter">
-                    <h2>Chapter 02</h2>
-                    <p>Chapter title goes here.</p>
+
+                    <div class="chapter-number">
+                        CHAPTER 02
+                    </div>
+
+                    <h3>
+                        Chapter Title
+                    </h3>
+
+                    <p class="chapter-description">
+                        Add a short description of
+                        this chapter here.
+                    </p>
 
                     <div class="resources">
-                        <a href="#" target="_blank">🧠 Mind Map</a>
-                        <a href="#" target="_blank">🎥 Video</a>
-                        <a href="#" target="_blank">🃏 Flashcards</a>
-                        <a href="#" target="_blank">❓ Questions</a>
+
+                        <a href="#" target="_blank">
+                            🧠 Mind Map
+                        </a>
+
+                        <a href="#" target="_blank">
+                            🎥 Video
+                        </a>
+
+                        <a href="#" target="_blank">
+                            🃏 Flashcards
+                        </a>
+
+                        <a href="#" target="_blank">
+                            ❓ Questions
+                        </a>
+
                     </div>
+
                 </div>
 
 
-                <!-- CHAPTER 3 -->
+
+                <!-- CHAPTER 03 -->
+
                 <div class="chapter">
-                    <h2>Chapter 03</h2>
-                    <p>Chapter title goes here.</p>
+
+                    <div class="chapter-number">
+                        CHAPTER 03
+                    </div>
+
+                    <h3>
+                        Chapter Title
+                    </h3>
+
+                    <p class="chapter-description">
+                        Add a short description of
+                        this chapter here.
+                    </p>
 
                     <div class="resources">
-                        <a href="#" target="_blank">🧠 Mind Map</a>
-                        <a href="#" target="_blank">🎥 Video</a>
-                        <a href="#" target="_blank">🃏 Flashcards</a>
-                        <a href="#" target="_blank">❓ Questions</a>
+
+                        <a href="#" target="_blank">
+                            🧠 Mind Map
+                        </a>
+
+                        <a href="#" target="_blank">
+                            🎥 Video
+                        </a>
+
+                        <a href="#" target="_blank">
+                            🃏 Flashcards
+                        </a>
+
+                        <a href="#" target="_blank">
+                            ❓ Questions
+                        </a>
+
                     </div>
+
                 </div>
+
 
             </div>
 
-        </div>
+        </main>
+
+
+
+        <!-- FOOTER -->
 
         <footer>
-            Grade 10 Health • Final Examination Revision
+
+            <div class="name">
+                P. Sharmila Murugananth
+            </div>
+
+            <div>
+                Grade 10 Health • Final Examination Revision
+            </div>
+
         </footer>
 
+
     </div>
-<script>
 
-    const correctPassword = "health10";
 
-    // Check whether the student has already logged in
-    if (sessionStorage.getItem("healthLoggedIn") === "true") {
-        document.getElementById("loginScreen").style.display = "none";
-        document.getElementById("studyHub").style.display = "block";
-    }
 
-    function checkPassword() {
+    <!-- =========================
+         PASSWORD SCRIPT
+    ========================= -->
 
-        const password = document.getElementById("password").value;
+    <script>
 
-        if (password === correctPassword) {
+        /*
+         * STUDY HUB PASSWORD
+         *
+         * Change "health10" later
+         * to your preferred password.
+         */
 
-            // Remember login during this browser session
-            sessionStorage.setItem("healthLoggedIn", "true");
+        const correctPassword = "health10";
 
-            document.getElementById("loginScreen").style.display = "none";
-            document.getElementById("studyHub").style.display = "block";
 
-        } else {
+        /*
+         * Check whether the student
+         * has already entered the password.
+         */
 
-            document.getElementById("error").style.display = "block";
+        if (
+            localStorage.getItem("healthLoggedIn") === "true"
+        ) {
+
+            showStudyHub();
 
         }
-    }
 
-</script>
 
- 
+        /*
+         * Check password
+         */
+
+        function checkPassword() {
+
+            const password =
+                document.getElementById("password").value;
+
+            const error =
+                document.getElementById("error");
+
+
+            if (password === correctPassword) {
+
+                localStorage.setItem(
+                    "healthLoggedIn",
+                    "true"
+                );
+
+                showStudyHub();
+
+            } else {
+
+                error.style.display = "block";
+
+            }
+
+        }
+
+
+        /*
+         * Allow students to press ENTER
+         * instead of clicking the button.
+         */
+
+        function handleEnter(event) {
+
+            if (event.key === "Enter") {
+
+                checkPassword();
+
+            }
+
+        }
+
+
+        /*
+         * Show the Study Hub
+         */
+
+        function showStudyHub() {
+
+            document.getElementById(
+                "loginScreen"
+            ).style.display = "none";
+
+            document.getElementById(
+                "studyHub"
+            ).style.display = "block";
+
+        }
+
+    </script>
+
 </body>
 </html>
