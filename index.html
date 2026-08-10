@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 10 Health - Study Hub</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        /* PASSWORD SCREEN */
+        #loginScreen {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #dff6ff, #eef2ff);
+        }
+
+        .login-box {
+            background: white;
+            width: 100%;
+            max-width: 420px;
+            padding: 40px 30px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .login-box h1 {
+            margin-bottom: 10px;
+        }
+
+        .login-box p {
+            color: #666;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 13px;
+            margin: 15px 0 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .login-box button:hover {
+            background: #1d4ed8;
+        }
+
+        #error {
+            color: #d11;
+            display: none;
+            margin-top: 10px;
+        }
+
+        /* MAIN WEBSITE */
+        #studyHub {
+            display: none;
+        }
+
+        header {
+            background: #2563eb;
+            color: white;
+            text-align: center;
+            padding: 45px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .chapters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .chapter {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+        }
+
+        .chapter h2 {
+            margin-top: 0;
+            color: #2563eb;
+        }
+
+        .resources {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .resources a {
+            text-decoration: none;
+            text-align: center;
+            padding: 11px 5px;
+            border-radius: 8px;
+            background: #eef2ff;
+            color: #1d4ed8;
+            font-weight: bold;
+        }
+
+        .resources a:hover {
+            background: #dbeafe;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+        }
+
+        @media (max-width: 500px) {
+            header h1 {
+                font-size: 28px;
+            }
+
+            .resources {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PASSWORD SCREEN -->
+    <div id="loginScreen">
+
+        <div class="login-box">
+
+            <h1>🔐 Grade 10 Health</h1>
+
+            <p>Enter the study password to continue.</p>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter password"
+            >
+
+            <button onclick="checkPassword()">
+                Enter Study Hub
+            </button>
+
+            <p id="error">Incorrect password. Please try again.</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- STUDY HUB -->
+    <div id="studyHub">
+
+        <header>
+            <h1>📚 Grade 10 Health Study Hub</h1>
+            <p>Final Examination Revision</p>
+        </header>
+
+        <div class="container">
+
+            <div class="intro">
+                <h2>Revise Chapter by Chapter</h2>
+                <p>
+                    Use the mind maps, videos, flashcards and questions
+                    to prepare for your final examination.
+                </p>
+            </div>
+
+
+            <div class="chapters">
+
+                <!-- CHAPTER 1 -->
+                <div class="chapter">
+                    <h2>Chapter 01</h2>
+                    <p>Chapter title goes here.</p>
+
+                    <div class="resources">
+                        <a href="#" target="_blank">🧠 Mind Map</a>
+                        <a href="#" target="_blank">🎥 Video</a>
+                        <a href="#" target="_blank">🃏 Flashcards</a>
+                        <a href="#" target="_blank">❓ Questions</a>
+                    </div>
+                </div>
+
+
+                <!-- CHAPTER 2 -->
+                <div class="chapter">
+                    <h2>Chapter 02</h2>
+                    <p>Chapter title goes here.</p>
+
+                    <div class="resources">
+                        <a href="#" target="_blank">🧠 Mind Map</a>
+                        <a href="#" target="_blank">🎥 Video</a>
+                        <a href="#" target="_blank">🃏 Flashcards</a>
+                        <a href="#" target="_blank">❓ Questions</a>
+                    </div>
+                </div>
+
+
+                <!-- CHAPTER 3 -->
+                <div class="chapter">
+                    <h2>Chapter 03</h2>
+                    <p>Chapter title goes here.</p>
+
+                    <div class="resources">
+                        <a href="#" target="_blank">🧠 Mind Map</a>
+                        <a href="#" target="_blank">🎥 Video</a>
+                        <a href="#" target="_blank">🃏 Flashcards</a>
+                        <a href="#" target="_blank">❓ Questions</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer>
+            Grade 10 Health • Final Examination Revision
+        </footer>
+
+    </div>
+
+
+    <script>
+
+        function checkPassword() {
+
+            const password =
+                document.getElementById("password").value;
+
+            /* TEMPORARY PASSWORD */
+            const correctPassword = "health10";
+
+            if (password === correctPassword) {
+
+                document.getElementById("loginScreen").style.display = "none";
+                document.getElementById("studyHub").style.display = "block";
+
+            } else {
+
+                document.getElementById("error").style.display = "block";
+
+            }
+        }
+
+    </script>
+
+</body>
+</html>
