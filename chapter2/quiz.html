@@ -1,1 +1,90 @@
-
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 02 - Quiz</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Noto Sans Tamil",sans-serif;background:#f4f7fb;color:#1f2937}
+header{background:linear-gradient(135deg,#2563eb,#4f46e5);color:#fff;text-align:center;padding:30px 18px}
+header h1{margin:0 0 8px;font-size:30px} header p{margin:0;line-height:1.6}
+.container{max-width:850px;margin:auto;padding:24px 18px 45px}
+.progress{text-align:center;color:#6b7280;font-weight:bold;margin-bottom:15px}
+.card{background:#fff;border-radius:18px;padding:26px;box-shadow:0 7px 24px rgba(0,0,0,.08)}
+.question{font-size:21px;font-weight:bold;line-height:1.7;margin-bottom:18px}
+.option{display:block;width:100%;text-align:left;background:#fff;border:1px solid #d7deea;border-radius:11px;padding:14px;margin:10px 0;font-size:16px;cursor:pointer}
+.option:hover,.option.selected{background:#eff6ff;border-color:#2563eb}
+.hint-btn,.check-btn,.nav-btn{border:0;border-radius:10px;padding:12px 18px;font-weight:bold;cursor:pointer}
+.hint-btn{background:#fef3c7;color:#92400e;margin-top:8px}
+.hint{display:none;margin-top:12px;padding:14px;border-radius:10px;background:#fffbeb;border-left:4px solid #f59e0b;line-height:1.7}
+.check-btn{background:#16a34a;color:#fff;margin-top:18px}
+.result{display:none;margin-top:18px;padding:16px;border-radius:10px;line-height:1.7}
+.correct{background:#f0fdf4;border-left:4px solid #16a34a}
+.wrong{background:#fef2f2;border-left:4px solid #dc2626}
+.nav{display:flex;justify-content:center;gap:12px;margin-top:18px}
+.nav-btn{background:#e5e7eb} .next{background:#2563eb;color:#fff}
+.back{display:block;text-align:center;margin-top:22px;color:#2563eb;text-decoration:none;font-weight:bold}
+footer{text-align:center;color:#6b7280;padding:24px;font-size:14px}
+@media(max-width:600px){header h1{font-size:24px}.card{padding:20px}.question{font-size:19px}}
+</style>
+</head>
+<body>
+<header>
+<h1>❓ Chapter 02 — Quiz</h1>
+<p>பிள்ளைப் பருவ வளர்ச்சி மற்றும் சுகாதாரம்</p>
+</header>
+<main class="container">
+<div class="progress" id="progress"></div>
+<section class="card">
+<div class="question" id="question"></div>
+<div id="options"></div>
+<button class="hint-btn" onclick="toggleHint()">💡 Hint</button>
+<div class="hint" id="hint"></div>
+<button class="check-btn" onclick="checkAnswer()">✓ Check Answer</button>
+<div class="result" id="result"></div>
+</section>
+<div class="nav">
+<button class="nav-btn" onclick="prev()">← Previous</button>
+<button class="nav-btn next" onclick="next()">Next →</button>
+</div>
+<a class="back" href="../index.html">← Back to Study Hub</a>
+</main>
+<footer><strong>P. Sharmila Murugananth</strong><br>Grade 10 Health • Final Examination Revision</footer>
+<script>
+const quiz=[{"q": "பிள்ளைப் பருவ வளர்ச்சியானது எத்தனை பிரதான கட்டங்களாக வகைப்படுத்தப்பட்டுள்ளது?", "options": ["3", "4", "5", "6"], "answer": 2, "hint": "இப்பருவமானது தாயின் கருப்பையில் இருக்கும் காலம் முதல் 10 வயது வரையான காலப்பகுதியை உள்ளடக்கியது."}, {"q": "ஆராய்ச்சிகளின்படி, ஒரு பிள்ளையின் மூளை வளர்ச்சி 80% நிறைவடையும் வயது என்ன?", "options": ["1 வயது", "2 வயது", "3 வயது", "5 வயது"], "answer": 2, "hint": "இப்பருவத்தில் பிள்ளையின் உடல் மற்றும் உள வளர்ச்சி மிகத் துரிதமாக நடைபெறுகிறது."}, {"q": "இலங்கைச் சட்டப்படி ஒரு பெண் திருமணம் செய்வதற்குரிய குறைந்தபட்ச சட்டபூர்வ வயது எல்லை என்ன?", "options": ["16 வயது", "18 வயது", "20 வயது", "21 வயது"], "answer": 1, "hint": "இந்த வயதைப் பூர்த்தி செய்த பின்னரே ஒரு பெண் சட்டரீதியாகத் திருமணம் செய்ய அனுமதிக்கப்படுகிறார்."}, {"q": "பெண் பிள்ளைகள் ஜெர்மன் சின்னமுத்து (German Measles) நோயிலிருந்து தங்களைப் பாதுகாத்துக் கொள்ள பெற்றுக் கொள்ள வேண்டிய தடுப்பூசி எது?", "options": ["பி.சி.ஜி (BCG)", "ருபெல்லா (Rubella)", "முத்தடுப்பு ஊசி (DPT)", "போலியோ (OPV)"], "answer": 1, "hint": "இத்தடுப்பூசியை 15 வயது பூர்த்தியடையும் போது அல்லது கர்ப்பமடைவதற்கு 3 மாதங்களுக்கு முன்னராவது பெற்றுக் கொள்ள வேண்டும்."}, {"q": "பிரசவத்தின் போது பிறக்கும் ஆரோக்கியமான ஒரு குழந்தையின் உடல் நிறை பொதுவாக எந்த அளவில் இருக்க வேண்டும்?", "options": ["1.5 kg – 2.5 kg", "2.0 kg – 3.0 kg", "2.5 kg – 3.5 kg", "3.5 kg – 4.5 kg"], "answer": 2, "hint": "தாயின் கர்ப்பகால ஊட்டச்சத்து சரியாக அமையும் போது குழந்தை இந்த ஆரோக்கியமான எடையுடன் பிறக்கும்."}, {"q": "குழந்தை பிறந்த சில நாட்களில் தாய்ப்பாலுடன் சுரக்கும், நோய் எதிர்ப்புச் சக்தியை அதிகரிக்கும் மஞ்சள் நிற கெட்டியான திரவத்தின் பெயர் என்ன?", "options": ["கொலஸ்ட்ரம் (Colostrum)", "சீம்பால் மாவு", "லாக்டோஸ்", "குளுக்கோஸ்"], "answer": 0, "hint": "இது குழந்தையின் நோய் எதிர்ப்புச் சக்தியை அதிகரிப்பதுடன் செரிமானத் தொகுதியின் செயல்பாட்டை ஆரம்பிக்கவும் உதவுகிறது."}, {"q": "புதிய சூழலுக்குக் குழந்தை இசைவாக்கமடையும் 'சிசுப் பருவம்' எந்தக் காலப்பகுதியைக் குறிக்கிறது?", "options": ["தாயின் கருப்பையில் இருக்கும் காலம்", "பிறந்தது முதல் 28 நாட்கள் வரை", "1 மாதத்திலிருந்து 12 மாதங்கள் வரை", "1 முதல் 5 வயது வரை"], "answer": 1, "hint": "பிறந்த குழந்தையானது புதிய சூழலுக்குத் தன்னைத் தகவமைத்துக் கொள்ளும் மிகக் குறுகிய ஆரம்பக் காலப்பகுதி இதுவாகும்."}, {"q": "குழந்தையின் ஆரோக்கியமான சிறுநீரக மற்றும் உடல் வளர்ச்சிக்கு, அதன் முதல் ஒரு வருடத்திற்குள் உணவில் எவற்றைச் சேர்ப்பதைத் தவிர்க்க வேண்டும்?", "options": ["காய்கறிகள் மற்றும் பழங்கள்", "சீனி மற்றும் உப்பு", "தாய்ப்பால் மற்றும் நீர்", "மேலதிக திட உணவுகள்"], "answer": 1, "hint": "இவை குழந்தையின் மென்மையான உள்ளுறுப்புகளுக்குக் கூடுதல் சுமையைத் தரக்கூடும் என்பதால் முதல் வருடத்தில் தவிர்க்கப்பட வேண்டும்."}, {"q": "முன் பிள்ளைப் பருவத்தில் (1 முதல் 5 வயது வரை) உள்ள ஒரு குழந்தைக்கு நாளொன்றுக்கு எத்தனை முறை உணவு வேளைகள் வழங்கப்பட வேண்டும்?", "options": ["3 பிரதான உணவுகள் மட்டும்", "2 பிரதான உணவுகள் மற்றும் 2 சிற்றுணவுகள்", "3 பிரதான உணவுகள் மற்றும் 2 சிற்றுணவுகள் (மொத்தம் 5 வேளைகள்)", "4 பிரதான உணவுகள் மற்றும் 3 சிற்றுணவுகள்"], "answer": 2, "hint": "பிள்ளைகளின் துரித வளர்ச்சிக்குத் தேவையான ஆற்றலைப் பெற பிரதான உணவுகளுக்கு இடையே இடைவேளை உணவுகளும் அவசியமாகும்."}, {"q": "பிள்ளைகள் தங்களது முறையான கல்விச் செயல்பாடுகளைத் தொடங்கும் 'பின் பிள்ளைப் பருவம்' எந்த வயது வரையான காலப்பகுதியாகும்?", "options": ["1 முதல் 5 வயது வரை", "6 – 10 வயது வரை", "11 – 15 வயது வரை", "28 நாட்கள் வரை"], "answer": 1, "hint": "இப்பருவத்தில் பிள்ளைகள் தங்களது சூழலை மிகுந்த ஆர்வத்துடன் அவதானித்துத் தேடல்களை மேற்கொள்வர்."}];
+const answers=["5 — முன் பிரசவப் பருவம், சிசுப் பருவம், குழந்தைப் பருவம், முன் பிள்ளைப் பருவம், பின் பிள்ளைப் பருவம் ஆகிய 5 கட்டங்கள்.", "3 வயது — ஆராய்ச்சிகளின்படி, 3 வயதில் மூளை வளர்ச்சி 80% நிறைவு பெறுகிறது.", "18 வயது — இலங்கைச் சட்டத்தின்படி 18 வயது பூர்த்தியடைந்த ஒருவருக்குத் திருமணம் செய்ய சட்டரீதியான அனுமதி உண்டு.", "ருபெல்லா (Rubella) — 15 வயது பூர்த்தியடைந்த பெண் பிள்ளைகள் ருபெல்லா தடுப்பூசியைப் பெற்றுக் கொள்வதன் மூலம் ஜெர்மன் சின்னமுத்து நோயிலிருந்து பாதுகாத்துக் கொள்ளலாம்.", "2.5 kg – 3.5 kg — பிறக்கும் போது குழந்தையின் ஆரோக்கியமான உடல் நிறை இந்த அளவில் இருக்க வேண்டும்.", "கொலஸ்ட்ரம் (Colostrum) — பிரசவத்தின் பின் சுரக்கும் மஞ்சள் நிற கெட்டியான திரவம் நோய் எதிர்ப்புச் சக்தியை வழங்குவதில் முதன்மையானது.", "பிறந்தது முதல் 28 நாட்கள் வரை — இதுவே சிசுப் பருவமாகும்.", "சீனி மற்றும் உப்பு — முதல் ஒரு வருடத்திற்குள் உணவில் இவற்றைச் சேர்ப்பதைத் தவிர்க்க வேண்டும்.", "3 பிரதான உணவுகள் மற்றும் 2 சிற்றுணவுகள் (மொத்தம் 5 வேளைகள்).", "6 – 10 வயது வரை — இக்காலத்தில் முறையான பாடசாலைக் கல்வி ஆரம்பமாகிறது."];
+let current=0,selected=-1;
+function render(){
+ const x=quiz[current]; selected=-1;
+ document.getElementById("progress").textContent=`Question ${current+1} / ${quiz.length}`;
+ document.getElementById("question").textContent=x.q;
+ document.getElementById("hint").textContent=x.hint;
+ document.getElementById("hint").style.display="none";
+ const o=document.getElementById("options");o.innerHTML="";
+ x.options.forEach((v,i)=>{
+   const b=document.createElement("button");b.className="option";
+   b.textContent=String.fromCharCode(65+i)+") "+v;
+   b.onclick=()=>{selected=i;document.querySelectorAll(".option").forEach(z=>z.classList.remove("selected"));b.classList.add("selected")};
+   o.appendChild(b);
+ });
+ document.getElementById("result").style.display="none";
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+function toggleHint(){const h=document.getElementById("hint");h.style.display=h.style.display==="none"?"block":"none"}
+function checkAnswer(){
+ const r=document.getElementById("result");
+ if(selected<0){r.className="result wrong";r.innerHTML="⚠️ முதலில் ஒரு விடையைத் தெரிவு செய்யவும்.";r.style.display="block";return}
+ if(selected===quiz[current].answer){
+   r.className="result correct";r.innerHTML="✅ சரியான விடை!<br><strong>"+answers[current]+"</strong>";
+ }else{
+   r.className="result wrong";r.innerHTML="❌ சரியான விடை அல்ல.<br><strong>சரியான விடை: "+answers[current]+"</strong>";
+ }
+ r.style.display="block";
+}
+function next(){current=(current+1)%quiz.length;render()}
+function prev(){current=(current-1+quiz.length)%quiz.length;render()}
+render();
+</script>
+</body>
+</html>
